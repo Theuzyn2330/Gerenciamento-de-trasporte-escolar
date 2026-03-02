@@ -53,7 +53,7 @@ INSERT INTO escolas (nome, responsavel, telefone) VALUES
 ('Escola B', 'Diretora B', '99999-2222'),
 ('Escola C', 'Diretora C', '99999-3333');
 
-INSERT INTO criancas (nome, escola_id, turno, telefone_responsavel) VALUES
+INSERT INTO alunos (nome, escola_id, turno, telefone_responsavel) VALUES
 ('Aluno 1', 1, 'manha', '98888-1111'),
 ('Aluno 2', 1, 'tarde', '98888-2222'),
 ('Aluno 3', 2, 'manha', '98888-3333'),

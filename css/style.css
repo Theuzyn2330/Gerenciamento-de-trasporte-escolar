@@ -1,0 +1,158 @@
+@import url("//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css");
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f4f4;
+}
+
+/* TOPO */
+.topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: #FFC107;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    z-index: 1000;
+}
+
+.logo {
+    font-weight: bold;
+    color: #111;
+    font-size: 18px;
+}
+
+.top-right {
+    font-weight: bold;
+    color: #111;
+}
+
+/* CONTAINER CENTRAL */
+.container {
+    margin-left: 5em;
+    margin-top: 80px;
+    padding: 20px;
+}
+
+/* MENU LATERAL */
+.menu, .menu-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background: #FFC107;
+    z-index: 10;  
+    overflow: hidden;
+    box-shadow: 2px 0 18px rgba(0, 0, 0, 0.26);
+}
+
+.menu li a {
+    display: inline-block;
+    text-indent: -500em;
+    height: 5em;
+    width: 5em;
+    line-height: 5em;
+    text-align: center;
+    color: #111;
+    position: relative;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    transition: background 0.2s ease-in-out;
+}
+
+.menu li a:before {
+    font-family: FontAwesome;
+    text-indent: 0em;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 1.4em;
+}
+
+.menu li a.search:before { content: "\f015"; }
+.menu li a.archive:before { content: "\f073"; }
+.menu li a.pencil:before { content: "\f0f6"; }
+.menu li a.contact:before { content: "\f011"; }
+.menu li a.about:before { content: "\f007"; }
+.menu li a.home:before { content: "\f0c9"; }
+
+.menu li a:hover {
+    background: #111;
+    color: #FFF;
+}
+
+.menu-bar {
+    overflow: hidden;
+    left: 5em;
+    width: 0;
+    height: 100%;
+    transition: all 0.2s ease-in-out;
+    background: #FFF;
+}
+
+.menu-bar li a {
+    display: block;
+    height: 4em;
+    line-height: 4em;
+    text-align: center;
+    color: #111;
+    text-decoration: none;  
+    border-bottom: 1px solid #ddd;
+    transition: background 0.2s ease-in-out;
+}
+
+.menu-bar li:first-child a {
+    height: 5em;
+    background: #FFC107;
+    font-weight: bold;
+}
+
+.menu-bar li a:hover {
+    background: #111;
+    color: #FFF;
+}
+
+.open {
+    width: 12em;
+}
+
+/* RESPONSIVO */
+@media all and (max-width: 768px) {
+
+    .container {
+        margin-left: 0;
+    }
+
+    .menu {
+        height: 5em;
+        width: 100%;
+        top: auto;
+        bottom: 0;
+        display: flex;
+    }
+
+    .menu li {
+        flex: 1;
+    }
+
+    .menu-bar {
+        width: 100%;
+        left: 0;
+        bottom: 5em;
+        height: 0;
+    }
+
+    .open {
+        height: auto;
+    }
+}

@@ -1,0 +1,37 @@
+/transporte-escolar
+│
+├── index.php (login)
+├── dashboard.php
+├── logout.php
+│
+├── escolas.php
+├── cadastrar_escola.php
+├── editar_escola.php
+├── excluir_escola.php
+│
+├── criancas.php
+├── cadastrar_crianca.php
+├── editar_crianca.php
+├── excluir_crianca.php
+│
+├── calendario.php
+│
+├── atualizar_status.php
+│
+├── /includes
+│   ├── conexao.php
+│   ├── header.php
+│   ├── footer.php
+│   ├── auth.php
+│
+├── /css
+│   └── style.css
+│
+├── /js
+│   └── script.js
+│
+├── /uploads
+│   └── imagens_perfil/
+│
+├── manifest.json
+└── service-worker.js
