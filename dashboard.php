@@ -38,7 +38,7 @@ require_once "includes/auth.php";
     </li>
 
     <li title="Escolas">
-        <a href="#" class="pencil">Escolas</a>
+        <a href="escolas.php" class="pencil">Escolas</a>
     </li>
 
     <li title="Crianças">
@@ -57,10 +57,10 @@ require_once "includes/auth.php";
 
 <ul class="menu-bar">
     <li><a href="#" class="menu-button">Fechar</a></li>
-    <li><a href="#">Dashboard</a></li>
-    <li><a href="#">Escolas</a></li>
+    <li><a href="">Dashboard</a></li>
+    <li><a href="escolas.php">Escolas</a></li>
     <li><a href="#">Crianças</a></li>
-    <li><a href="#">Calendário</a></li>
+    <li><a href="">Calendário</a></li>
 </ul>
 
 <!-- CONTEÚDO CENTRAL -->
