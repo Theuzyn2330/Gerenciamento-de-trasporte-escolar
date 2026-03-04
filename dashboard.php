@@ -1,5 +1,8 @@
 <?php
 require_once "includes/auth.php";
+require_once "includes/conexao.php";
+
+$pagina = isset($_GET['pagina']) ? $_GET['pagina'] : 'home';
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +19,6 @@ require_once "includes/auth.php";
 </head>
 <body>
 
-<!-- FAIXA SUPERIOR -->
 <header class="topbar">
     <div class="top-left">
         <span class="logo">🚌 Transporte Escolar</span>
@@ -26,7 +28,6 @@ require_once "includes/auth.php";
     </div>
 </header>
 
-<!-- MENU LATERAL -->
 <ul class="menu">
 
     <li title="menu">
@@ -34,19 +35,19 @@ require_once "includes/auth.php";
     </li>
 
     <li title="Dashboard">
-        <a href="#" class="search">Dashboard</a>
+        <a href="dashboard.php" class="search">Dashboard</a>
     </li>
 
     <li title="Escolas">
-        <a href="escolas.php" class="pencil">Escolas</a>
+        <a href="dashboard.php?pagina=escolas" class="pencil">Escolas</a>
     </li>
 
-    <li title="Crianças">
-        <a href="#" class="about">Crianças</a>
+    <li title="Alunos">
+        <a href="dashboard.php?pagina=alunos" class="about">Alunos</a>
     </li>
 
     <li title="Calendário">
-        <a href="#" class="archive">Calendário</a>
+        <a href="dashboard.php?pagina=calendario" class="archive">Calendário</a>
     </li>
 
     <li title="Sair">
@@ -57,15 +58,32 @@ require_once "includes/auth.php";
 
 <ul class="menu-bar">
     <li><a href="#" class="menu-button">Fechar</a></li>
-    <li><a href="">Dashboard</a></li>
-    <li><a href="escolas.php">Escolas</a></li>
-    <li><a href="#">Crianças</a></li>
-    <li><a href="">Calendário</a></li>
+    <li><a href="dashboard.php">Dashboard</a></li>
+    <li><a href="dashboard.php?pagina=escolas">Escolas</a></li>
+    <li><a href="dashboard.php?pagina=alunos">Alunos</a></li>
+    <li><a href="dashboard.php?pagina=calendario">Calendário</a></li>
 </ul>
 
-<!-- CONTEÚDO CENTRAL -->
 <div class="container">
-    <!-- Por enquanto vazio -->
+
+<?php
+
+if ($pagina == 'escolas') {
+    include "includes/paginas/escolas.php";
+
+} elseif ($pagina == 'alunos') {
+    echo "<h2>Área de Alunos (em construção)</h2>";
+
+} elseif ($pagina == 'calendario') {
+    echo "<h2>Calendário (em construção)</h2>";
+
+} else {
+    echo "<h2>Painel Principal</h2>";
+    echo "<p>Selecione uma opção no menu lateral.</p>";
+}
+
+?>
+
 </div>
 
 </body>
