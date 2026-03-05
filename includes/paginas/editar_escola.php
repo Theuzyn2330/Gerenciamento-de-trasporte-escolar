@@ -20,18 +20,36 @@ if (isset($_POST['atualizar'])) {
     $stmt->bind_param("sssi", $nome, $responsavel, $telefone, $id);
     $stmt->execute();
 
-    header("Location: escolas.php");
+    header("Location: dashboard.php?pagina=escolas");
     exit();
 }
 ?>
 
+
+<div class="table-container">
+
 <h2>Editar Escola</h2>
 
 <form method="POST">
-    <input type="text" name="nome" value="<?= $escola['nome'] ?>" required><br><br>
-    <input type="text" name="responsavel" value="<?= $escola['responsavel'] ?>"><br><br>
-    <input type="text" name="telefone" value="<?= $escola['telefone'] ?>"><br><br>
-    <button type="submit" name="atualizar">Atualizar</button>
+
+<input type="text" name="nome" value="<?= $escola['nome'] ?>" required>
+
+<input type="text" name="responsavel" value="<?= $escola['responsavel'] ?>">
+
+<input type="text" name="telefone" value="<?= $escola['telefone'] ?>">
+
+<br>
+
+<button class="btn-primary" type="submit" name="atualizar">
+Atualizar
+</button>
+
+<a class="btn-delete" href="dashboard.php?pagina=escolas">
+Cancelar
+</a>
+
 </form>
 
-<a href="escolas.php">Cancelar</a>
+</div>
+
+<a href="dashboard.php?pagina=escolas">Cancelar</a>

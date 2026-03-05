@@ -8,5 +8,5 @@ $stmt = $conn->prepare("DELETE FROM escolas WHERE id = ?");
 $stmt->bind_param("i", $id);
 $stmt->execute();
 
-header("Location: escolas.php");
+header("Location: dashboard.php?pagina=escolas");
 exit();
