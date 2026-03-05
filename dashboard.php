@@ -64,20 +64,33 @@ $pagina = isset($_GET['pagina']) ? $_GET['pagina'] : 'home';
     <li><a href="dashboard.php?pagina=calendario">Calendário</a></li>
 </ul>
 
+
 <div class="container">
 
 <?php
 
 if ($pagina == 'escolas') {
+
     include "includes/paginas/escolas.php";
 
+} elseif ($pagina == 'cadastrar_escola') {
+
+    include "includes/paginas/cadastrar_escola.php";
+
+} elseif ($pagina == 'editar_escola') {
+
+    include "includes/paginas/editar_escola.php";
+
 } elseif ($pagina == 'alunos') {
+
     echo "<h2>Área de Alunos (em construção)</h2>";
 
 } elseif ($pagina == 'calendario') {
+
     echo "<h2>Calendário (em construção)</h2>";
 
 } else {
+
     echo "<h2>Painel Principal</h2>";
     echo "<p>Selecione uma opção no menu lateral.</p>";
 }
@@ -85,6 +98,5 @@ if ($pagina == 'escolas') {
 ?>
 
 </div>
-
 </body>
 </html>
