@@ -24,7 +24,7 @@ $pagina = isset($_GET['pagina']) ? $_GET['pagina'] : 'home';
         <span class="logo">🚌 Transporte Escolar</span>
     </div>
     <div class="top-right">
-        Seja bem-vindo, <?php echo $_SESSION['usuario']; ?>
+        Seja bem-vindo,<br><?php echo $_SESSION['usuario']; ?>
     </div>
 </header>
 
@@ -83,7 +83,15 @@ if ($pagina == 'escolas') {
 
 } elseif ($pagina == 'alunos') {
 
-    echo "<h2>Área de Alunos (em construção)</h2>";
+    include "includes/paginas/alunos.php";
+
+} elseif ($pagina == 'cadastrar_aluno') {
+
+    include "includes/paginas/cadastrar_aluno.php";
+
+} elseif ($pagina == 'editar_aluno') {
+
+    include "includes/paginas/editar_aluno.php";
 
 } elseif ($pagina == 'calendario') {
 
