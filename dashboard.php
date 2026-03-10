@@ -95,7 +95,7 @@ if ($pagina == 'escolas') {
 
 } elseif ($pagina == 'calendario') {
 
-    echo "<h2>Calendário (em construção)</h2>";
+    include "includes/paginas/calendario.php";
 
 } else {
 

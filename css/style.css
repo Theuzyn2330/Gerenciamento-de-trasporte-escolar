@@ -272,6 +272,7 @@ table th {
 
 table td {
     padding: 10px;
+    word-break: break-all;
     border-bottom: 1px solid #ddd;
 }
 
