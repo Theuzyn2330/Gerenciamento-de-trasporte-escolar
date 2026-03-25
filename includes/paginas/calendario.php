@@ -29,49 +29,41 @@ $alunos = $conn->query($sql);
 <form method="POST" action="includes/paginas/salvar_registro.php">
 
 <input type="hidden" name="data" value="<?php echo $data; ?>">
-
-<table>
-
-<tr>
-<th>Aluno</th>
-<th>Escola</th>
-<th>Foi para escola</th>
-<th>Voltou para casa</th>
-<th>Parcial</th>
-</tr>
+<div class="cards-container">
 
 <?php while($aluno = $alunos->fetch_assoc()) { ?>
 
-<tr>
+<div class="card-aluno">
 
-<td><?php echo $aluno['nome']; ?></td>
+    <div class="card-header">
+        <strong><?php echo $aluno['nome']; ?></strong>
+        <span><?php echo $aluno['escola_nome']; ?></span>
+    </div>
 
-<td><?php echo $aluno['escola_nome']; ?></td>
+    <div class="card-body">
 
-<td>
-<input type="checkbox"
-name="foi_escola[<?php echo $aluno['id']; ?>]"
-value="1">
-</td>
+        <label class="checkbox-group">
+            <input type="checkbox" name="foi_escola[<?php echo $aluno['id']; ?>]" value="1">
+            <span class="checkmark"></span>
+            Foi para escola
+        </label>
 
-<td>
-<input type="checkbox"
-name="voltou_casa[<?php echo $aluno['id']; ?>]"
-value="1">
-</td>
+        <label class="checkbox-group">
+            <input type="checkbox" name="voltou_casa[<?php echo $aluno['id']; ?>]" value="1">
+            <span class="checkmark"></span>
+            Voltou para casa
+        </label>
 
-<td>
-<input type="checkbox"
-name="parcial[<?php echo $aluno['id']; ?>]"
-value="1">
-</td>
+        <label class="checkbox-group">
+            <input type="checkbox" name="parcial[<?php echo $aluno['id']; ?>]" value="1">
+            <span class="checkmark"></span>
+            Parcial
+        </label>
 
-</tr>
+    </div>
+
+</div>
 
 <?php } ?>
 
-</table>
-
-<button type="submit">Salvar registros</button>
-
-</form>
+</div>

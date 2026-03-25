@@ -257,43 +257,112 @@ body {
     background: #111;
     color: #FFF;
 }
-
 table {
     width: 100%;
     border-collapse: collapse;
+    margin-top: 15px;
+    background: #FFF;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
+/* cabeçalho */
 table th {
     background: #111;
     color: #FFF;
-    padding: 10px;
-    text-align: left;
+    padding: 14px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
 }
 
+/* células */
 table td {
-    padding: 10px;
-    word-break: break-all;
-    border-bottom: 1px solid #ddd;
+    padding: 14px;
+    border-bottom: 1px solid #eee;
+    font-size: 14px;
 }
 
+/* zebra */
+table tr:nth-child(even) {
+    background: #fafafa;
+}
+
+/* hover elegante */
 table tr:hover {
-    background: #f9f9f9;
+    background: #fff8e1;
+    transition: 0.2s;
 }
 
+table td:last-child {
+    white-space: nowrap;
+}
+/* impede quebra feia de conteúdo */
+table td {
+    word-break: normal;
+    overflow-wrap: break-word;
+}
+
+/* coluna de telefone NÃO quebra */
+table td:nth-child(3),
+table td:nth-child(4) {
+    white-space: nowrap;
+}
+.btn-edit, .btn-delete {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 8px;
+    font-size: 16px;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+/* editar */
 .btn-edit {
+    background: rgba(255,193,7,0.15);
     color: #FFC107;
-    font-size: 30px;
-    font-weight: bold;
-    text-decoration: none;
-    margin-right: 10px;
 }
 
-.btn-delete {
-    color: red;
-    font-size: 30px;
-    font-weight: bold;
-    text-decoration: none;
+.btn-edit:hover {
+    background: #FFC107;
+    color: #111;
+    transform: scale(1.1);
 }
+
+/* deletar */
+.btn-delete {
+    background: rgba(255,0,0,0.1);
+    color: red;
+}
+
+.btn-delete:hover {
+    background: red;
+    color: #FFF;
+    transform: scale(1.1);
+}
+
+
+
+@media (max-width: 768px) {
+
+    table th, table td {
+        padding: 10px;
+        font-size: 13px;
+    }
+
+    .btn-edit, .btn-delete {
+        width: 30px;
+        height: 30px;
+        font-size: 14px;
+    }
+}
+
+
+
 
 form input{
 width:100%;
@@ -303,7 +372,133 @@ border:1px solid #ccc;
 border-radius:6px;
 font-size:15px;
 }
-
-form button{
-margin-top:10px;
+form button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #FFC107, #FFB300);
+    color: #111;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
+
+form button:hover {
+    transform: translateY(-2px);
+    background: #111;
+    color: #FFF;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+}
+
+form button:active {
+    transform: scale(0.98);
+}
+
+.checkbox-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* Esconde o padrão */
+.checkbox-group input {
+    display: none;
+}
+
+/* Caixa */
+.checkmark {
+    width: 22px;
+    height: 22px;
+    border: 2px solid #FFC107;
+    border-radius: 6px;
+    position: relative;
+    transition: all 0.2s;
+}
+
+/* Hover */
+.checkbox-group:hover .checkmark {
+    box-shadow: 0 0 5px rgba(255,193,7,0.5);
+}
+
+/* Marcado */
+.checkbox-group input:checked + .checkmark {
+    background: #FFC107;
+}
+
+/* Ícone */
+.checkbox-group input:checked + .checkmark::after {
+    content: "\f00c";
+    font-family: FontAwesome;
+    color: #111;
+    position: absolute;
+    top: 1px;
+    left: 4px;
+    font-size: 14px;
+}
+
+form button[type="submit"] {
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+}
+
+/* Espaço extra no mobile */
+@media (max-width: 768px) {
+    form {
+        margin-bottom: 80px;
+    }
+}
+
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.card-aluno {
+    background: #FFF;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: 0.2s;
+    border-left: 5px solid #FFC107;
+}
+
+.card-aluno:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.card-header {
+    margin-bottom: 10px;
+}
+
+.card-header strong {
+    display: block;
+    font-size: 16px;
+    color: #111;
+}
+
+.card-header span {
+    font-size: 13px;
+    color: #666;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* melhora checkbox dentro do card */
+.card-body .checkbox-group {
+    justify-content: flex-start;
+    font-size: 14px;
+}
+
+
