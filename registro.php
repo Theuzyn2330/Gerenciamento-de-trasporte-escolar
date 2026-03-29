@@ -3,35 +3,45 @@ session_start();
 require_once "includes/conexao.php";
 
 $erro = "";
+$sucesso = "";
 
-if (isset($_POST['entrar'])) {
-
+if (isset($_POST['registrar'])) {
     $username = trim($_POST['username']);
     $password = trim($_POST['password']);
 
-    if (!empty($username) && !empty($password)) {
+if (!empty($username) && !empty($password)) {
+    //verefica se o usuário já existe
+    $check = $pdo->prepare("SELECT id FROM usuarios WHERE username = ?");
+    $check->execute([$username]);
 
-        $stmt = $pdo->prepare("SELECT id, username, senha FROM usuarios WHERE username = :username");       
-        $stmt->execute(['username' => $username]);
-        $user = $stmt->fetch (PDO::FETCH_ASSOC);
+    if ($check->rowCount() > 0){
+        $erro = "Usuário já existe. Por favor, escolha outro nome de usuário.";
+    } else {
+        //Criptografa a senha antes de salvar(SEGURANÇA)
+        $senhaHash = password_hash($password, PASSWORD_DEFAULT);
 
-        // Se o usuário existir
-        if ($user) {
-            //Verificação de senha por criptografia
-            if (password_verify($password, $user['senha'])) {
-                $_SESSION['usuario'] = $username;
-                $_SESSION['usuario_id'] = $user['id'];
-                header("Location: dashboard.php");
-                exit();
-            } else {
-                $erro = "Senha incorreta.";
-            }
-        } else {
-            $erro = "Usuário não encontrado. Por favor, registre-se.";
-        }
+        //insere no banco
+        $sql = "INSERT INTO usuarios (username, senha) VALUES (:user, :pass)";
+        $stmt = $pdo->prepare($sql);
+
+        try {
+            $stmt->execute({
+                ':user' => $username,
+                ':pass' => $senhaHash
+            });
+            $sucesso = "Registro bem-sucedido! Você já pode fazer login.";
+        } catch (PDOException $e) {
+            $erro = "Erro ao registrar: " . $e->getMessage();
+             }
+
+        }   
     }
+    
 }
+
+
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -56,3 +66,4 @@ if (isset($_POST['entrar'])) {
     </div>
 </body>
 </html>
+
