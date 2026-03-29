@@ -32,27 +32,35 @@ if (isset($_POST['entrar'])) {
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>Registro - Transporte Escolar</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body class="login-body">
-    <div class="login-container">
-        <div class="login-card">
-            <h1>📝 Criar Conta</h1>
-            <?php if($erro): ?> <p style="color:red;"><?= $erro ?></p> <?php endif; ?>
-            <?php if($sucesso): ?> <p style="color:green;"><?= $sucesso ?></p> <?php endif; ?>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gerenciamento de Transporte Escolar</title>
 
-            <form method="POST">
-                <input type="text" name="username" placeholder="Escolha um usuário" required>
-                <input type="password" name="password" placeholder="Escolha uma senha" required>
-                <button type="submit" name="registrar">Cadastrar</button>
-            </form>
-            <p><a href="index.php">Voltar para o Login</a></p>
-        </div>
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="login-body">
+
+<div class="login-container">
+
+    <div class="login-card">
+
+        <h1>🚌 Transporte Escolar</h1>
+        <p>Gerenciamento de Transporte Escolar</p>
+
+        <form method="POST">
+            <input type="text" name="username" placeholder="Digite seu nome de usuário" required>
+            <input type="password" name="password" placeholder="Digite sua senha" required>
+            <button type="submit" name="entrar">Entrar</button>
+        </form>
+
     </div>
+
+</div>
+
 </body>
 </html>
