@@ -56,6 +56,8 @@ if (isset($_POST['entrar'])) {
             <input type="text" name="username" placeholder="Digite seu nome de usuário" required>
             <input type="password" name="password" placeholder="Digite sua senha" required>
             <button type="submit" name="entrar">Entrar</button>
+            <p>Não tem uma conta? <a href="registro.php">Registrar-se</a></p>
+            <?php if($erro): ?> <p style="color:red;"><?= $erro ?></p> <?php endif; ?>
         </form>
 
     </div>
