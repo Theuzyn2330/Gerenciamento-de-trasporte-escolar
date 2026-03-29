@@ -25,10 +25,10 @@ if (!empty($username) && !empty($password)) {
         $stmt = $pdo->prepare($sql);
 
         try {
-            $stmt->execute({
+            $stmt->execute([
                 ':user' => $username,
                 ':pass' => $senhaHash
-            });
+            ]);
             $sucesso = "Registro bem-sucedido! Você já pode fazer login.";
         } catch (PDOException $e) {
             $erro = "Erro ao registrar: " . $e->getMessage();
