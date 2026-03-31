@@ -4,9 +4,8 @@ require_once "includes/conexao.php";
 
 $id = $_GET['id'];
 
-$stmt = $conn->prepare("DELETE FROM alunos WHERE id = ?");
-$stmt->bind_param("i", $id);
-$stmt->execute();
+$stmt = $pdo->prepare("DELETE FROM alunos WHERE id = ?");
+$stmt->execute([$id]);
 
 header("Location: dashboard.php?pagina=alunos");
 exit();
