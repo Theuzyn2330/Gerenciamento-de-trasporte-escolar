@@ -1,5 +1,5 @@
 <?php
-$result = $conn->query("SELECT * FROM escolas ORDER BY id DESC");
+$result = $pdo->query("SELECT * FROM escolas ORDER BY id DESC");
 ?>
 
 <div class="table-container">
@@ -18,7 +18,7 @@ $result = $conn->query("SELECT * FROM escolas ORDER BY id DESC");
         <th>Ações</th>
     </tr>
 
-<?php while($escola = $result->fetch_assoc()): ?>
+<?php while($escola = $result->fetch(PDO::FETCH_ASSOC)): ?>
 <tr>
     <td><?= $escola['nome'] ?></td>
     <td><?= $escola['responsavel'] ?></td>

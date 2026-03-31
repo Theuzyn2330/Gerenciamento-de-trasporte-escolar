@@ -4,11 +4,9 @@ require_once "includes/conexao.php";
 
 $id = $_GET['id'];
 
-$busca = $conn->prepare("SELECT * FROM escolas WHERE id = ?");
-$busca->bind_param("i", $id);
-$busca->execute();
-$resultado = $busca->get_result();
-$escola = $resultado->fetch_assoc();
+$busca = $pdo->prepare("SELECT * FROM escolas WHERE id = ?");
+$busca->execute([$id]);
+$escola = $busca->fetch(PDO::FETCH_ASSOC);
 
 if (isset($_POST['atualizar'])) {
 
@@ -16,9 +14,8 @@ if (isset($_POST['atualizar'])) {
     $responsavel = $_POST['responsavel'];
     $telefone = $_POST['telefone'];
 
-    $stmt = $conn->prepare("UPDATE escolas SET nome=?, responsavel=?, telefone=? WHERE id=?");
-    $stmt->bind_param("sssi", $nome, $responsavel, $telefone, $id);
-    $stmt->execute();
+    $stmt = $pdo->prepare("UPDATE escolas SET nome=?, responsavel=?, telefone=? WHERE id=?");
+    $stmt->execute([$nome, $responsavel, $telefone, $id]);
 
     header("Location: dashboard.php?pagina=escolas");
     exit();

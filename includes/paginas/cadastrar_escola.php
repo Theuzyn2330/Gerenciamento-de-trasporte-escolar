@@ -8,9 +8,8 @@ if (isset($_POST['salvar'])) {
     $responsavel = $_POST['responsavel'];
     $telefone = $_POST['telefone'];
 
-    $stmt = $conn->prepare("INSERT INTO escolas (nome, responsavel, telefone) VALUES (?, ?, ?)");
-    $stmt->bind_param("sss", $nome, $responsavel, $telefone);
-    $stmt->execute();
+    $stmt = $pdo->prepare("INSERT INTO escolas (nome, responsavel, telefone) VALUES (?, ?, ?)");
+    $stmt->execute([$nome, $responsavel, $telefone]);
 
     header("Location: dashboard.php?pagina=escolas");
     exit();
