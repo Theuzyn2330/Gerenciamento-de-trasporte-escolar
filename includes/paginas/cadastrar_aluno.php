@@ -1,7 +1,7 @@
 <?php
 require_once "includes/conexao.php";
 
-$escolas = $conn->query("SELECT * FROM escolas");
+$escolas = $pdo->query("SELECT * FROM escolas");
 
 if(isset($_POST['salvar'])){
 
@@ -10,14 +10,13 @@ $escola_id = $_POST['escola_id'];
 $turno = $_POST['turno'];
 $telefone = $_POST['telefone'];
 
-$stmt = $conn->prepare("
+$stmt = $pdo->prepare("
 INSERT INTO alunos
 (nome, escola_id, turno, telefone_responsavel)
 VALUES (?, ?, ?, ?)
 ");
 
-$stmt->bind_param("siss", $nome, $escola_id, $turno, $telefone);
-$stmt->execute();
+$stmt->execute([$nome, $escola_id, $turno, $telefone]);
 
 header("Location: dashboard.php?pagina=alunos");
 exit();
@@ -33,7 +32,7 @@ exit();
 
 <select name="escola_id">
 
-<?php while($e = $escolas->fetch_assoc()) { ?>
+<?php while($e = $escolas->fetch(PDO::FETCH_ASSOC)) { ?>
 
 <option value="<?php echo $e['id']; ?>">
 <?php echo $e['nome']; ?>

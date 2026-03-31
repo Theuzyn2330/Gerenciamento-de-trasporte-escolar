@@ -8,7 +8,7 @@ JOIN escolas ON alunos.escola_id = escolas.id
 ORDER BY alunos.nome
 ";
 
-$result = $conn->query($sql);
+$result = $pdo->query($sql);
 ?>
 
 <div class="table-container">
@@ -29,7 +29,10 @@ $result = $conn->query($sql);
 <th>Ações</th>
 </tr>
 
-<?php while($aluno = $result->fetch_assoc()) { ?>
+<?php 
+
+while ($aluno = $result->fetch(PDO::FETCH_ASSOC)) {   
+?>
 
 <tr>
 

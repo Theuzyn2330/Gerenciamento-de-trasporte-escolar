@@ -3,13 +3,11 @@ require_once "includes/conexao.php";
 
 $id = $_GET['id'];
 
-$busca = $conn->prepare("SELECT * FROM alunos WHERE id = ?");
-$busca->bind_param("i", $id);
-$busca->execute();
-$resultado = $busca->get_result();
-$aluno = $resultado->fetch_assoc();
+$busca = $pdo->prepare("SELECT * FROM alunos WHERE id = ?");
+$busca->execute([$id]);
+$aluno = $busca->fetch(PDO::FETCH_ASSOC);
 
-$escolas = $conn->query("SELECT * FROM escolas");
+$escolas = $pdo->query("SELECT * FROM escolas");
 
 if(isset($_POST['atualizar'])){
 
@@ -18,14 +16,13 @@ $escola_id = $_POST['escola_id'];
 $turno = $_POST['turno'];
 $telefone = $_POST['telefone'];
 
-$stmt = $conn->prepare("
+$stmt = $pdo->prepare("
 UPDATE alunos 
 SET nome=?, escola_id=?, turno=?, telefone_responsavel=? 
 WHERE id=?
 ");
 
-$stmt->bind_param("sissi",$nome,$escola_id,$turno,$telefone,$id);
-$stmt->execute();
+$stmt->execute([$nome, $escola_id, $turno, $telefone, $id]);
 
 header("Location: dashboard.php?pagina=alunos");
 exit();
@@ -41,7 +38,7 @@ exit();
 
 <select name="escola_id">
 
-<?php while($e = $escolas->fetch_assoc()) { ?>
+<?php while($e = $escolas->fetch(PDO::FETCH_ASSOC)) { ?>
 
 <option value="<?php echo $e['id']; ?>"
 <?php if($aluno['escola_id'] == $e['id']) echo "selected"; ?>>
