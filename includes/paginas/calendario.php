@@ -8,10 +8,10 @@ SELECT alunos.*, escolas.nome AS escola_nome
 FROM alunos
 JOIN escolas ON alunos.escola_id = escolas.id
 WHERE alunos.ativo = 1
-ORDER BY escolas.nome
+ORDER BY escolas.nome, alunos.nome
 ";
 
-$alunos = $conn->query($sql);
+$alunos = $pdo->query($sql);
 ?>
 
 <h2>Registro Diário</h2>
@@ -31,7 +31,7 @@ $alunos = $conn->query($sql);
 <input type="hidden" name="data" value="<?php echo $data; ?>">
 <div class="cards-container">
 
-<?php while($aluno = $alunos->fetch_assoc()) { ?>
+<?php while($aluno = $alunos->fetch(PDO::FETCH_ASSOC)) { ?>
 
 <div class="card-aluno">
 
